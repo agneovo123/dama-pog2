@@ -16,6 +16,7 @@ int main()
     Checker bab = Checker();
     Board board = Board();
     board.PrintEmpty();
+    board.PrintBoard();
     return 0;
 }
 

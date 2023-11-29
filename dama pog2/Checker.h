@@ -4,7 +4,16 @@ class Checker
 	int x;
 	int y;
 	bool isDama;
+	bool alive;
+	bool isBright;
 public:
-	bool Move() const;
+	//void Checker();
+	void MoveTo(int x, int y);
+	void Die();
+	int GetX() const;
+	int GetY() const;
+	bool IsDama() const;
+	bool IsBright() const;
+	bool IsAlive() const;
 };
-
+///TODO: constructor
