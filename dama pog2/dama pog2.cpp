@@ -8,16 +8,79 @@
 
 using namespace std;
 
+int getIntForX(string a) {
+	if (a == "a") { return 0; }
+	if (a == "b") { return 1; }
+	if (a == "c") { return 2; }
+	if (a == "d") { return 3; }
+	if (a == "e") { return 4; }
+	if (a == "f") { return 5; }
+	if (a == "g") { return 6; }
+	if (a == "h") { return 7; }
+	return -1;
+}
+
 int main()
 {
-    cout << "Hello World!\n";
-    cout << "Hello World! without endl";
-    cout << "Hello World! with endl" << endl;
-    Checker bab = Checker();
-    Board board = Board();
-    board.PrintEmpty();
-    board.PrintBoard();
-    return 0;
+	// this works:
+	//cout << "test\n >";
+	//string a, b, c, d;
+	//cin >> a >> b >> c >> d;
+	//int bint = stoi(b);
+	//int dint = stoi(d);
+	//cout << "a: " << a << "\n";
+	//cout << "b: " << b << "\n";
+	//cout << "c: " << c << "\n";
+	//cout << "d: " << d << "\n";
+	//cout << "dint: " << dint << "\n";
+	//cout << "bint: " << bint << "\n";
+
+	// description
+	cout << "Kér leírást?\n";
+	cout << "1: igen\n";
+	cout << "2: nem\n>>";
+	string choice = "";
+	cin >> choice;
+	while (choice != "1" && choice != "2") { cout << "Érvénytelen válasz, add meg újra!\n>"; cin >> choice; }
+	if (choice == "1") {
+		cout << "- O = világos\n";
+		cout << "- @ = világos dáma\n";
+		cout << "- X = sötét\n";
+		cout << "- # = sötét dáma\n\n";
+		cout << "- Sötét kezd\n";
+		cout << "- Ütéskényszer van(ütéssorozatot muszáj végrehajtani)\n";
+		cout << "- Sima bábu csak előre léphet, egyesével, és lépésenként 1 - et üthet\n";
+		cout << "- Szemközti sor elérésekor a bábú dámává változik\n";
+		cout << "- Dáma hátrafele is léphet és üthet\n";
+		cout << "- Dáma nekifutásból, egybefüggőleg bármennyi elenséges bábut üthet, túlfuthat\n\n";
+		cout << "Leírás vége.\n";
+		cout << "1: játék kezdése\n";
+		cout << "2: kilépés\n>>";
+		cin >> choice;
+		while (choice != "1" && choice != "2") { cout << "Érvénytelen válasz, add meg újra!\n>"; cin >> choice; }
+		if (choice == "2") { return 0; }
+	}
+	// board
+	Board board = Board();
+	board.PrintBoard();
+	// gameloop 
+	string a, b, c, d;
+	int startX, startY, endX, endY;
+	string who = "";
+	do {
+		if (board.isDarkTurn()) { who = "Sötét"; }
+		else { who = "Világos"; }
+		cout << who << " lépése.\nAdd meg a lépést (pl: \'>>a 3 b 4\')\n>>";
+		cin >> a >> b >> c >> d;
+		if (a == "quit") { break; }
+		startX = getIntForX(a);
+		startY = stoi(b);
+		endX = getIntForX(c);
+		endY = stoi(d);
+		board.ApplyMove(startX, startY, endX, endY);
+		board.PrintBoard();
+	} while (!board.isGameEnd());
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

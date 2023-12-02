@@ -14,3 +14,4 @@ int Checker::GetX() const { return this->x; }
 int Checker::GetY() const { return this->y; }
 bool Checker::IsBright() const { return this->isBright; }
 bool Checker::IsAlive() const { return this->alive; }
+bool Checker::IsValid() const { return this->valid; }
