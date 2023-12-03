@@ -19,22 +19,10 @@ int getIntForX(string a) {
 	if (a == "h") { return 7; }
 	return -1;
 }
+int getIntForY(string a) { return 8 - stoi(a); }
 
 int main()
 {
-	// this works:
-	//cout << "test\n >";
-	//string a, b, c, d;
-	//cin >> a >> b >> c >> d;
-	//int bint = stoi(b);
-	//int dint = stoi(d);
-	//cout << "a: " << a << "\n";
-	//cout << "b: " << b << "\n";
-	//cout << "c: " << c << "\n";
-	//cout << "d: " << d << "\n";
-	//cout << "dint: " << dint << "\n";
-	//cout << "bint: " << bint << "\n";
-
 	// description
 	cout << "Kér leírást?\n";
 	cout << "1: igen\n";
@@ -70,13 +58,13 @@ int main()
 	do {
 		if (board.isDarkTurn()) { who = "Sötét"; }
 		else { who = "Világos"; }
-		cout << who << " lépése.\nAdd meg a lépést (pl: \'>>a 3 b 4\')\n>>";
+		cout << who << " lépése.\nAdd meg a lépést (pl: \'>>b 3 a 4\')\n>>";
 		cin >> a >> b >> c >> d;
 		if (a == "quit") { break; }
 		startX = getIntForX(a);
-		startY = stoi(b);
+		startY = getIntForY(b);
 		endX = getIntForX(c);
-		endY = stoi(d);
+		endY = getIntForY(d);
 		board.ApplyMove(startX, startY, endX, endY);
 		board.PrintBoard();
 	} while (!board.isGameEnd());

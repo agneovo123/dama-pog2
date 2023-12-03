@@ -11,7 +11,7 @@ public:
 		this->gameEnd = false;
 		this->darkTurn = true;
 		// light
-		int x = 1;
+		int x = 0;
 		int y = 0;
 		for (int i = 0; i < 12; i++)
 		{
@@ -25,7 +25,7 @@ public:
 			}
 		}
 		// light dark
-		x = 0;
+		x = 1;
 		y = 5;
 		for (int i = 12; i < 24; i++)
 		{

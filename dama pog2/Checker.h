@@ -3,16 +3,16 @@ class Checker
 {
 	int x;
 	int y;
-	bool isDama;
+	bool dama;
 	bool alive;
-	bool isBright;
+	bool bright;
 	bool valid;
 public:
 	Checker(int x, int y, bool bright) {
 		this->x = x;
 		this->y = y;
-		this->isBright = bright;
-		this->isDama = false;
+		this->bright = bright;
+		this->dama = false;
 		this->alive = true;
 		this->valid = true;
 	}
@@ -20,11 +20,11 @@ public:
 		this->x = -1;
 		this->y = -1;
 		this->valid = false;
-		this->isBright = false;
-		this->isDama = false;
+		this->bright = false;
+		this->dama = false;
 		this->alive = false;
 	}
-	void MoveTo(int x, int y);
+	void MoveTo(int newX, int newY);
 	void Die();
 	int GetX() const;
 	int GetY() const;
