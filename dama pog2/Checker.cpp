@@ -12,7 +12,7 @@ void Checker::MoveTo(int newX, int newY) {
 	this->x = newX;
 	this->y = newY;
 }
-void Checker::Die() { this->alive = false; this->valid = false; this->x = -1; this->y = -1; }
+void Checker::Die() { this->alive = false; this->valid = false; this->x = -1; this->y = -1; this->dama = false; }
 void Checker::Upgrade() { this->dama = true; }
 const bool& Checker::IsDama() const { return this->dama; }
 const int& Checker::GetX() const { return this->x; }

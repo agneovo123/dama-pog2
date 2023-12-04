@@ -98,7 +98,7 @@ void Board::ApplyMove(int startX, int startY, int endX, int endY) {
 	if (start.IsDama()) {
 		bool moveAccepted = false;
 		// 'dáma' can take with runup and runoff
-		if (abs(endY - startY) == abs(endX - startX) && endX - startX > 1) {
+		if (abs(endY - startY) == abs(endX - startX) && abs(endX - startX) > 1) {
 			int xDir = endX > startX ? 1 : -1;
 			int yDir = endY > startY ? 1 : -1;
 			int checkY = startY + yDir;
@@ -128,6 +128,7 @@ void Board::ApplyMove(int startX, int startY, int endX, int endY) {
 				}
 				// succesful takes --> move
 				start.MoveTo(endX, endY);
+				moveAccepted = true;
 			}
 			else { cout << "Játék >> Érvénytelen lépés: több ellenséget csak úgy üthetsz le, ha azok közvetlenül egymás \'mellett\' vannak\n"; return; }
 		}
@@ -220,7 +221,7 @@ bool Board::TakeCheck() {
 		int startX = start.GetX();
 		int startY = start.GetY();
 		// don't check enemy's checkers
-		if (start.IsBright() == this->darkTurn) { continue; }
+		if (start.IsBright() == this->darkTurn || !start.IsAlive() || !start.IsValid()) { continue; }
 		// brute force check
 		if (start.IsDama()) {
 			// case: + +
@@ -332,6 +333,7 @@ bool Board::TakeCheck() {
 }
 
 const bool& Board::isDarkTurn() const { return this->darkTurn; }
+void Board::MustTake(bool check) { this->mustTake = check; }
 const bool& Board::isGameEnd() const { return this->gameEnd; }
 const bool& Board::MustTake() const { return this->mustTake; }
 void Board::setTurn(bool turn) { this->darkTurn = turn; }

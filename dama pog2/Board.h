@@ -48,6 +48,7 @@ public:
 	void toggleTurn();
 	void ApplyMove(int startX, int startY, int endX, int endY);
 	bool TakeCheck();
+	void MustTake(bool check);
 	void PrintBoard();
 	const bool& isDarkTurn() const;
 	const bool& isGameEnd() const;
