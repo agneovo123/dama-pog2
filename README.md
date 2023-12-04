@@ -18,3 +18,5 @@ Dáma játék Prog. II-höz
 
 
 A szabályokat a [wikipédiáról](https://hu.wikipedia.org/wiki/D%C3%A1maj%C3%A1t%C3%A9k) kukáztam össze
+
+GitHub link: https://github.com/agneovo123/dama-pog2
