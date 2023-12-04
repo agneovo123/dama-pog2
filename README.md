@@ -6,7 +6,7 @@ Dáma játék Prog. II-höz
 - O = világos
 - @ = világos dáma
 - X = sötét
-- # = sötét dáma
+- \# = sötét dáma
 
 - Sötét kezd
 - Ütéskényszer van (ütéssorozatot muszáj végrehajtani)
