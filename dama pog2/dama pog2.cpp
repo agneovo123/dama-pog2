@@ -59,8 +59,15 @@ int main()
 	do {
 		if (board.isDarkTurn()) { who = "Sötét"; }
 		else { who = "Világos"; }
-		cout << who << " lépése.\nAdd meg a lépést (pl: \'>>b 3 a 4\')\n>>";
+		if (board.MustTake()) {
+			cout << "Játék >> ÜTÉSKÉNYSZER! " << (board.isDarkTurn() ? "Sötétnek" : "Világosnak") << " ütnie kell!\n";
+			cout << "Játék >> Add meg a lépést (pl: \'<<b 3 a 4\')\n<<";
+		}
+		else {
+			cout << "Játék >> " << who << " lépése.\nAdd meg a lépést (pl: \'<<b 3 a 4\')\n<<";
+		}
 		cin >> a >> b >> c >> d;
+		cout << "\n\n\n\n\n";
 		if (a == "quit") { break; }
 		startX = getIntForX(a);
 		startY = getIntForY(b);

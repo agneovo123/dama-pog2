@@ -1,10 +1,10 @@
 #include "Checker.h"
 
-#include <iostream>
-using namespace std;
+//#include <iostream>
+//using namespace std;
 
 void Checker::MoveTo(int newX, int newY) {
-	cout << "[DEBUG] MoveTo(" << newX << ", " << newY << ")\n";
+	//cout << "[DEBUG] MoveTo(" << newX << ", " << newY << ")\n";
 	if (newX < 0) { newX = 0; }
 	if (newX > 7) { newX = 7; }
 	if (newY < 0) { newY = 0; }
@@ -22,6 +22,6 @@ const bool& Checker::IsAlive() const { return this->alive; }
 const bool& Checker::IsValid() const { return this->valid; }
 
 const void Checker::Print() const {
-	cout << "X=" << this->x << ", Y=" << this->y << ", bright=" << this->bright << ", adr=" << addressof(this->x) << "\n";
+	//cout << "X=" << this->x << ", Y=" << this->y << ", bright=" << this->bright << ", adr=" << addressof(this->x) << "\n";
 	return;
 }

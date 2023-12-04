@@ -6,10 +6,12 @@ class Board
 	Checker& GetCheckerAtPos(int x, int y);
 	bool gameEnd;
 	bool darkTurn;
+	bool mustTake;
 public:
 	Board() {
 		this->gameEnd = false;
 		this->darkTurn = true;
+		this->mustTake = false;
 		// light
 		int x = 0;
 		int y = 0;
@@ -49,5 +51,6 @@ public:
 	void PrintBoard();
 	const bool& isDarkTurn() const;
 	const bool& isGameEnd() const;
+	const bool& MustTake() const;
 };
 

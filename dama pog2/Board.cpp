@@ -41,7 +41,7 @@ void Board::DisplayChecker(Checker checker) const {
 }
 
 void Board::PrintBoard() {
-	cout << "Board::PrintBoard()\n";
+	//cout << "[DEBUG] > Board::PrintBoard()\n";
 	bool useRealCoords = false;
 	if (useRealCoords) { cout << "   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |   \n"; }
 	else { cout << "   | a | b | c | d | e | f | g | h |   \n"; }
@@ -69,14 +69,14 @@ void Board::PrintBoard() {
 }
 
 void Board::ApplyMove(int startX, int startY, int endX, int endY) {
-	cout << "ApplyMove()\n";
-	cout << "[DEBUG] > startX=" << startX << ", startY=" << startY << ", endX=" << endX << ", endY=" << endY << "\n";
+	//cout << "[DEBUG] > ApplyMove()\n";
+	//cout << "[DEBUG] > startX=" << startX << ", startY=" << startY << ", endX=" << endX << ", endY=" << endY << "\n";
 	// limit inputs
 	if (startY < 0) { cout << "Játék >> Nem léphetsz le a tábláról\n"; return; }
 	if (startY > 7) { cout << "Játék >> Nem léphetsz le a tábláról\n"; return; }
 	if (endY < 0) { cout << "Játék >> Nem léphetsz le a tábláról\n"; return; }
 	if (endY > 7) { cout << "Játék >> Nem léphetsz le a tábláról\n"; return; }
-	cout << "[DEBUG] > startX=" << startX << ", startY=" << startY << ", endX=" << endX << ", endY=" << endY << "\n";
+	//cout << "[DEBUG] > startX=" << startX << ", startY=" << startY << ", endX=" << endX << ", endY=" << endY << "\n";
 	// check for invalid col index
 	if (startX == -1 || endX == -1) { cout << "Játék >> Érvénytelen oszlop érték! Az oszlop csak \'abcdefgh\' kisbetűk egyike lehet.\n"; return; }
 	Checker& start = GetCheckerAtPos(startX, startY);
@@ -169,7 +169,7 @@ void Board::ApplyMove(int startX, int startY, int endX, int endY) {
 		if (!moveAccepted) {
 			updown = -1;
 			if (start.IsBright()) { updown = 1; }
-			cout << "[DEBUG] (endY - startY)=" << (endY - startY) << " , updown=" << updown << " , start.IsBright()=" << start.IsBright() << "\n";
+			//cout << "[DEBUG] (endY - startY)=" << (endY - startY) << " , updown=" << updown << " , start.IsBright()=" << start.IsBright() << "\n";
 			// height check
 			if (endY - startY != updown) { cout << "Játék >> Túl nagy, vagy túl kicsi lépés!\n"; return; }
 			// widht check
@@ -206,9 +206,9 @@ void Board::ApplyMove(int startX, int startY, int endX, int endY) {
 		// flip turns
 		toggleTurn();
 		// check for enemy's turn aswell.
-		if (TakeCheck()) { cout << "Játék >> ÜTÉSKÉNYSZER! " << (this->darkTurn ? "Sötétnek" : "Világosnak") << " ütnie kell!\n"; }
+		if (TakeCheck()) { this->mustTake = true; }
 	}
-	else { cout << "Játék >> ÜTÉSKÉNYSZER! " << (this->darkTurn ? "Sötétnek" : "Világosnak") << " ütnie kell!\n"; }
+	else { this->mustTake = true; }
 	return;
 }
 
@@ -333,6 +333,7 @@ bool Board::TakeCheck() {
 
 const bool& Board::isDarkTurn() const { return this->darkTurn; }
 const bool& Board::isGameEnd() const { return this->gameEnd; }
+const bool& Board::MustTake() const { return this->mustTake; }
 void Board::setTurn(bool turn) { this->darkTurn = turn; }
 void Board::toggleTurn() { this->darkTurn = !this->darkTurn; }
 
