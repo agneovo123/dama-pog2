@@ -26,11 +26,13 @@ public:
 	}
 	void MoveTo(int newX, int newY);
 	void Die();
-	int GetX() const;
-	int GetY() const;
-	bool IsDama() const;
-	bool IsBright() const;
-	bool IsAlive() const;
-	bool IsValid() const;
+	void Upgrade();
+	const int& GetX() const;
+	const int& GetY() const;
+	const bool& IsDama() const;
+	const bool& IsBright() const;
+	const bool& IsAlive() const;
+	const bool& IsValid() const;
+	const void Print() const;
 };
 ///TODO: constructor

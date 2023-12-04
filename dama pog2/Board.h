@@ -2,8 +2,8 @@
 #include "Checker.h"
 class Board
 {
-	Checker checkers[24];
-	Checker GetCheckerAtPos(int x, int y) const;
+	Checker checkers[25];
+	Checker& GetCheckerAtPos(int x, int y);
 	bool gameEnd;
 	bool darkTurn;
 public:
@@ -24,7 +24,7 @@ public:
 				y++;
 			}
 		}
-		// light dark
+		// dark
 		x = 1;
 		y = 5;
 		for (int i = 12; i < 24; i++)
@@ -38,13 +38,16 @@ public:
 				y++;
 			}
 		}
+		// the 25th is the invalid one
+		this->checkers[24] = Checker();
 	}
 	void DisplayChecker(Checker checker) const;
 	void setTurn(bool turn);
-	void toggleTurn(bool turn);
+	void toggleTurn();
 	void ApplyMove(int startX, int startY, int endX, int endY);
-	void PrintBoard() const;
-	bool isDarkTurn() const;
-	bool isGameEnd() const;
+	bool TakeCheck();
+	void PrintBoard();
+	const bool& isDarkTurn() const;
+	const bool& isGameEnd() const;
 };
 

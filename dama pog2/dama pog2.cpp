@@ -39,7 +39,8 @@ int main()
 		cout << "- Ütéskényszer van(ütéssorozatot muszáj végrehajtani)\n";
 		cout << "- Sima bábu csak előre léphet, egyesével, és lépésenként 1 - et üthet\n";
 		cout << "- Szemközti sor elérésekor a bábú dámává változik\n";
-		cout << "- Dáma hátrafele is léphet és üthet\n";
+		cout << "- Dáma hátrafele is léphet és üthet is\n";
+		cout << "- Dáma is csak egyet léphet, kivéve amikor üt\n";
 		cout << "- Dáma nekifutásból, egybefüggőleg bármennyi elenséges bábut üthet, túlfuthat\n\n";
 		cout << "Leírás vége.\n";
 		cout << "1: játék kezdése\n";
